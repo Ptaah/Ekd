@@ -1,0 +1,45 @@
+NAME=@PACKAGE_NAME@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+DATADIR=@datarootdir@
+BINDIR=@bindir@
+SOURCES=@source@
+VERSION=@version@
+MKDIR_P=@MKDIR_P@
+LOCALE_DIR=$(wildcard locale/??_??)
+po_files=$(foreach rep,$(LOCALE_DIR),$(wildcard $(rep)/LC_MESSAGES/*.po))
+mo_files=$(po_files:.po=.mo)
+sources=autom4te.cache config.log config.status configure Makefile
+
+all: traduction
+	@echo "Ready to install"
+	@echo "Type make install to install $(NAME)"
+
+tarball :
+	@echo "Create $(NAME) tarball"
+	cp -r $(SOURCES) /tmp/$(NAME)-$(VERSION)
+	cd /tmp ; tar cfj /tmp/$(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION)
+	@echo "tarball created here : /tmp/$(NAME)-$(VERSION).tar.bz2"
+install :
+	@echo "installing $(NAME)"
+	$(MKDIR_P) $(DATADIR)
+	$(MKDIR_P) $(BINDIR)
+	cp -vr $(SOURCES) $(DATADIR)/$(NAME)
+	echo -e '#!/bin/sh\ncd $(DATADIR)/ekd && python ekd_gui.py'> $(BINDIR)/$(NAME)
+	chmod 755 $(BINDIR)/$(NAME)
+	chmod -R 755 $(DATADIR)/$(NAME)
+	@echo "$(NAME) sucessfully installed"
+
+uninstall :
+	@echo "uninstall $(NAME)"
+	rm -rf $(BINDIR)/$(NAME)
+	rm -rf $(DATADIR)/$(NAME)
+	@echo "$(NAME) sucessfully removed"
+
+mrpropre :
+	@rm -fr $(sources) $(mo_files)
+
+traduction: $(mo_files)
+$(mo_files): %.mo : %.po
+	@echo "translating ekd"
+	python mo_compile.py

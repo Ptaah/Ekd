@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<configuration>
+  <chk>2</chk>
+  <imgmgkdir>/usr/bin/</imgmgkdir>
+  <mjpegtoolsdir>/usr/bin/</mjpegtoolsdir>
+  <soxdir>/usr/bin/</soxdir>
+  <time>5</time>
+  <typet>1</typet>
+  <speedt>2</speedt>
+  <bgcolor>0</bgcolor>
+  <tmpdir>/home/olivier/tmp/</tmpdir>
+</configuration>

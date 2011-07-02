@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<img2dv>
+  <inputfile></inputfile>
+  <options>
+	  <speedt>3</speedt>
+	  <bgcolor>0</bgcolor>
+	  <imgformat>0</imgformat>
+    <videof>0</videof>
+    <outputf>4</outputf>
+  </options>
+</img2dv>

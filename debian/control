@@ -1,0 +1,39 @@
+Source: ekd
+Section: contrib/graphics
+Priority: optional
+Maintainer: lama angelo <monsitt@gmail.com>
+Version: 2.0.8
+Package: ekd
+Architecture: all
+Depends: mplayer, mencoder, ffmpeg, imagemagick, python-imaging, python-qt4(>= 4.0.1), python-numpy, ffmpeg2theora, lame, mjpegtools, sox
+Description: Application making some post-production operations for videos and pictures
+ This is a little application to make sequence editing of animated files, make
+ treatment by pictures pack (with filters applications for example) and many
+ others things on the Linux operating system.
+ .
+ EKD (EnKoDeur-Mixeur) was firstly maked only for animation encodings in divx,
+ mpeg1 or motion jpeg format, then it advanced to propose post-productions
+ operations for the animated files and for the pictures. About the pictures,
+ EKD makes treatment by pack (that means it can work easily with one or more
+ pictures).
+ .
+ The Egonomic is one of the master words which characterize this software.
+ So the using is really simple, because everything is explained in the graphic
+ interface. EKD has been created for the user confort.
+ .
+ EKD was born from specifical needs of an amateur short film project, then it
+ was naturally added features non directly linked with this project. EKD offers
+ some interesting possibilities, as the video file encoding, the pictures pack
+ convertion into animated files, the compositing, the chroma key ... the
+ sequence edit. In fact, EKD is in the same time a software treating the
+ pictures and the video files. What's a video in fact ? Pictures that succeeds
+ the other with a specifical frequency (24 pictures per second, for example),
+ we see this like a movement, that is an animated picture. Treating picture by
+ EKD, that's give them the possibilty to transform into video file. EKD insn't
+ a software really maked for the pictures treatment or the video retouches, but
+ for the two in the same time !. It is essentially for those who want to make
+ picture and video treatements with a simple method, without use a too harder
+ software.
+ .
+ More information on EKD available at http://ekd.tuxfamily.org/
+ Original EKD by LAMA Angelo.

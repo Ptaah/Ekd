@@ -1,0 +1,228 @@
+Sous Linux:
+-----------
+
+Vous allez (en 8 étapes) apprendre à utiliser les outils mis à disposition dans EKD pour
+traduire les chaînes de caractère du code (d'EKD) en anglais et en espagnol, suivrez point
+par point ce qui est décrit en dessous.
+
+1) Tout d'abord il faut mettre en place la version SVN, pour cela suivez cette procédure:
+
+http://fr.lprod.org/wiki/doku.php?id=video:ekd:ekd_svn
+
+Après coup, vérifiez bien que le répertoire: /home/utilisateur/ekd a bien été crée 
+(utilisateur correspond à votre nom d'utilisateur bien entendu).
+
+2) Il va falloir entrer dans ce répertoire ekd, ouvrez une console et tapez ceci dedans:
+
+cd /home/utilisateur/ekd
+
+3) Il va maintenant falloir créer le fichier .pot correspondant à la mise à jour de la 
+traduction des chaînes de caractère contenues dans le code d'EKD, pour cela tapez
+la commande suivante (vous devez toujours être dans le répertoire ekd):
+
+python mise_a_jour_gettext.py
+
+Voici un extrait de ce qui s'affiche dans la console à la suite de cette dernière commande:
+
+toto@kubuntu-1:~/ekd$ python mise_a_jour_gettext.py
+
+La mise à jour a été faite sur le(s) fichier(s): 
+------------------------------------------------ 
+gui_modules_animation/animation_base.py gui_modules_animation/animation_base_encodageFiltre.py 
+gui_modules_animation/animation_encodage.py gui_modules_animation/animation_encodage_general.py 
+gui_modules_animation/animation_encodage_web.py gui_modules_animation/animation_encodage_hd.py 
+gui_modules_animation/animation_filtres_video.py gui_modules_animation/animation_montage_video.py 
+gui_modules_animation/animation_montage_video_vid_seul.py 
+gui_modules_animation/animation_montage_video_vid_plus_audio.py 
+gui_modules_animation/animation_montage_video_decoup_une_vid.py 
+gui_modules_animation/animation_separer_video_et_audio.py 
+gui_modules_animation/animation_conv_img_en_anim.py 
+gui_modules_animation/animation_conv_anim_en_img.py 
+gui_modules_animation/animation_reglag_divers.py 
+gui_modules_animation/animation_conv_vid_16_9_ou_4_3.py 
+gui_modules_animation/animation_encodage_avchd.py
+
+...
+
+La mise à jour a été faite sur le fichier:
+------------------------------------------
+ekd_gui.py
+
+4) Dans votre /home/utilisateur, quatre fichiers avec extension .pot viennent d'être crées,
+le premier fichier (la 1ère partie) est nommé ekdDoc_en_EN (correspond à la traduction des
+parties documentées d'EKD en anglais --> mais n'est plus utilisé, on ne va donc pas s'en 
+occuper), le second ekdDoc_es_ES (comme le fichier d'avant, parties documentées mais en 
+espagnol ce coup-ci --> mais là aussi n'est plus utilisé, on ne va donc pas s'en occuper).
+Les deux autres fichiers sont par contre indispensables, c'est avec ceux-là que nous allons
+travailler, ils sont nommés ekd_en_EN (la 1ère partie) pour la traduction anglaise, et 
+ekd_es_ES (la 1ère partie) pour la traduction espagnole. Dans leur deuxième partie, les
+fichiers qui viennent d'être décrits contiennent le jour et l'heure de leur création (comme
+cela vous savez à quelle version de la traduction ils correspondent), voilà ce que cela
+donne (un exemple):
+
+ekdDoc_en_EN_15_11_2009_16h55.pot
+ekdDoc_es_ES_15_11_2009_16h55.pot
+ekd_en_EN_15_11_2009_16h55.pot
+ekd_es_ES_15_11_2009_16h55.pot
+
+5) Il va maintenant falloir commencer les traductions à proprement parler mais pour cela PoEdit 
+doit être installé (PoEdit est très facile d'utilisation, pas la peine d'expliquer comment il
+fonctionne). Pour installer PoEdit sous Ubuntu (par exemple), tapez dans la console:
+
+sudo apt-get install poedit
+
+Avant d'utiliser PoEdit, il faut dans un premier temps retoucher les fichiers ekd_en_EN...
+et ekd_es_ES... (nous allons travailler uniquement avec ces deux fichiers). Ouvrez donc
+ekd_en_EN... et ekd_es_ES... dans un éditeur de texte (par exemple kate, mais cela peut
+être gedit, adaptez les commandes décrites ci-dessous à votre cas), tapez ceci dans la
+console:
+
+kate ekd_en_EN_15_11_2009_16h55.pot
+
+... nous allons changer l'entête. Dans un premier temps voilà ce que vous verrez dans
+l'entêtre concerné dans ekd_en_EN... :
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 16:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+... et voilà comment devra être transformé l'entête (adaptez les dates comme fait ici
+--> ne pas oublier d'adapter la date et l'heure --> un date et une heure cohérentes !!!):
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0-0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 16:55+0100\n"
+"PO-Revision-Date: 2009-11-15 16:56+0100\n"
+"Last-Translator: Laurent Bellegarde <laurent.bellegarde@free.fr>\n"
+"Language-Team: Traduction EKD <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+... maintenant enregistrez les changements dans kate ou gedit (ne pas oublier de faire !!!).
+
+Faites ce coup-ci les changements pour l'entête de ekd_es_ES..., tapez la commande:
+
+kate ekd_es_ES_15_11_2009_16h55.pot
+
+... nous allons changer l'entête. Dans un premier temps voilà ce que vous verrez dans
+l'entêtre concerné dans ekd_es_ES... :
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 16:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+... et voilà comment devra être transformé l'entête (adaptez les dates comme fait ici
+--> ne pas oublier d'adapter la date et l'heure --> un date et une heure cohérentes !!!):
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0-0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 16:55+0100\n"
+"PO-Revision-Date: 2009-11-15 16:56+0100\n"
+"Last-Translator: Jesús MUÑOZ <jesus.munoz@luztic.org>\n"
+"Language-Team: Traduction EKD <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+... maintenant enregistrez les changements dans kate ou gedit (ne pas oublier de faire !!!).
+
+6) Créez un répertoire en_EN.... et un autre es_ES... dans votre /home/utilisateur, copiez 
+et collez le fichier ekd_en_EN.... dans /home/utilisateur/en_EN, nous obtiendrons:
+
+/home/utilisateur/en_EN/ekd_en_EN_15_11_2009_16h55.pot
+
+... maintenant copiez et collez le fichier ekd_es_ES.... dans /home/utilisateur/es_ES, 
+nous obtiendrons:
+
+/home/utilisateur/en_EN/ekd_es_ES_15_11_2009_16h55.pot
+
+7) Vous pouvez dès lors ouvrir le fichier .pot ekd_en_EN... (pour la traduction anglaise)
+et le fichier .pot ekd_es_ES... (pour la traduction espagnole) dans PoEdit. 
+
+Ouvrez donc le fichier .pot ekd_en_EN... dans poEdit et allez voir (tout de suite) si l'entête est 
+correct. Dans un 1er temps allez voir dans: Catalogue > Configuration si tout va bien (faites des 
+changements si cela s'avère nécessaire) ... et allez ensuite dans Edition > Préférences (faites 
+des changements si cela s'avère nécessaire). Dans cette version anglaise il se peut qu'il y ait 
+des erreurs (que les champs Votre nom et Votre adresse électronique soient mal renseignés, si 
+c'est le cas, mettez Laurent Bellegarde dans le champ Votre Nom et laurent.bellegarde@free.fr
+dans le champ Votre adresse électronique). Ensuite (ici pour la traduction anglaise) allez dans
+l'onglet Mémoire de traduction et ajoutez en (par le bouton Ajouter), enlevez la sélection es si 
+elle est présente (par le bouton Effacer --> le bouton avec la croix rouge)... pour finir cliquez 
+sur le bouton Ok. Enregistrez tout ceci par le menu Fichier > Enregistrer (ne pas utiliser Fichier 
+> Enregistrer sous...). 
+Cette 1ère étape est indispensable et va vous permettre de faire en sorte que le fichier .pot ait 
+des coordonnées correctes (sans erreur). Vous allez remarquer qu'après l'enregistrement un fichier 
+avec extension mo a été crée en même temps que l'enregistrement du fichier .pot (c'est normal),
+gardez bien précieusement les deux fichiers (.pot et .mo).
+
+Ouvrez donc le fichier .pot ekd_es_ES... dans poEdit et allez voir (tout de suite) si l'entête est 
+correct.Dans un 1er temps allez voir dans: Catalogue > Configuration si tout va bien (faites des 
+changements si cela s'avère nécessaire) ... et allez ensuite dans Edition > Préférences (faites 
+des changements si cela s'avère nécessaire). Dans cette version anglaise il se peut qu'il y ait 
+des erreurs (que les champs Votre nom et Votre adresse électronique soient mal renseignés, si 
+c'est le cas, mettez Jesús MUÑOZ dans le champ Votre Nom et jesus.munoz@luztic.org
+dans le champ Votre adresse électronique). Ensuite (ici pour la traduction espagnole) allez dans
+l'onglet Mémoire de traduction et ajoutez es (par le bouton Ajouter), enlevez la sélection en si 
+elle est présente (par le bouton Effacer --> le bouton avec la croix rouge)... pour finir cliquez 
+sur le bouton Ok. Enregistrez tout ceci par le menu Fichier > Enregistrer (ne pas utiliser Fichier 
+> Enregistrer sous...). 
+Cette 1ère étape est indispensable et va vous permettre de faire en sorte que le fichier .pot ait 
+des coordonnées correctes (sans erreur). Vous allez remarquer qu'après l'enregistrement un fichier 
+avec extension mo a été crée en même temps que l'enregistrement du fichier .pot (c'est normal),
+gardez bien précieusement les deux fichiers (.pot et .mo).
+
+Une fois tout ceci fait ouvrez le fichier .pot, faites les traductions et enregistrez votre travail 
+(toujours traduction faites enregistrez votre travail (dans PoEdit) par le menu Fichier > Enregistrer 
+(ne pas utiliser Fichier > Enregistrer sous...).
+
+8) Après enregistrement et obtention des fichiers .pot et .mo, faites les moi parvenir (Angelo) par
+mail ... ou mettez-les moi en téléchargement quelque part.

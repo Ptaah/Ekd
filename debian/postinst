@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+touch /usr/share/ekd/divx2pass.log
+chmod 777 /usr/share/ekd/divx2pass.log
+python /usr/share/ekd/langues_inst_deb/gestion_des_langues_usr_share_ekd.py

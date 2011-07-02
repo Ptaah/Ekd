@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+rm /usr/share/ekd/divx2pass.log
+rm -rf /usr/share/ekd/locale

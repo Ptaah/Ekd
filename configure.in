@@ -1,0 +1,47 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.65])
+AC_INIT([ekd], [2.0-6], [aurelien.cedeyn@gmail.com])
+
+# Define some variables
+AC_SUBST(source, "$PWD")
+#AC_SUBST(version, "1.9-$(date +%Y%m%d%H%M)")
+AC_SUBST(version, "2.0-6")
+
+AC_ARG_ENABLE(runtime, AS_HELP_STRING([--disable-runtime],
+                                      [disable Ekd runtime needs (default is no)]),
+              [enable_runtime=$withval], [enable_runtime=yes])
+
+# Checks for programs.
+AC_PROG_MKDIR_P
+
+if test "$enable_runtime" = "yes" ; then
+    AC_CHECK_PROG(FFMPEG, ffmpeg, "yes", "no")
+    AC_CHECK_PROG(FFMPEG2THEORA, ffmpeg2theora, "yes", "no")
+    AC_CHECK_PROG(MPLAYER, mplayer, "yes", "no")
+    AC_CHECK_PROG(MENCODER, mencoder, "yes", "no")
+    AC_CHECK_PROG(SOX, sox, "yes", "no")
+    AC_CHECK_PROG(CONVERT, convert, "yes", "no")
+    AC_CHECK_PROG(LAME, lame, "yes", "no")
+    AC_CHECK_PROG(CONVERT, composite, "yes", "no")
+    AC_CHECK_PROG(MJPEGTOOLS, ppmtoy4m, "yes", "no")
+
+    test "$FFMPEG" = "no" && AC_MSG_FAILURE("ffmpeg not found")
+    test "$FFMPEG2THEORA" = "no" && AC_MSG_FAILURE("ffmpeg2theora not found")
+    test "$MPLAYER" = "no" && AC_MSG_FAILURE("Mplayer not found")
+    test "$MENCODER" = "no" && AC_MSG_FAILURE("Mencoder not found")
+    test "$SOX" = "no" && AC_MSG_FAILURE("Sox not found")
+    test "$COMPOSITE" = "no" && AC_MSG_FAILURE("ImageMagick not found")
+    test "$MJPEGTOOLS" = "no" && AC_MSG_FAILURE("mjpegtools not found")
+fi
+# Checks for libraries.
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT

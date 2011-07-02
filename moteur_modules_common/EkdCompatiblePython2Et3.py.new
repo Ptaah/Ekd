@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import platform
+from moteur_modules_common.EkdConfig import EkdConfig
+import sys
+
+class EkdPrint(object):
+	""" Classe pour gérer les print sous python 2 et 3 """
+
+	def __init__(self, texte):
+
+		# Texte qui sera affiché
+		#self.texte = unicode(texte, errors='ignore')
+		self.texte = unicode(texte)
+		
+		# Affichage selon les versions de Python
+		if platform.python_version()[0] == '2': print self.texte.encode(EkdConfig.coding, 'replace')
+		elif platform.python_version()[0] == '3': print self.texte.encode(EkdConfig.coding, 'replace')
+		#if platform.python_version()[0] == '2': print unicode(self.texte).encode(EkdConfig.coding, 'replace')
+		#elif platform.python_version()[0] == '3': print(unicode(self.texte).encode(EkdConfig.coding, 'replace'))
